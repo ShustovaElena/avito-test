@@ -1,9 +1,13 @@
 import './App.css';
-import { MainPage } from './pages/MainPage';
+import AppRoutes from './components/AppRoutes';
+import { Header } from './components/Header';
 
 function App() {
-  return(
-    <MainPage />
+  return (
+    <>
+        <Header />
+        <AppRoutes />
+    </>
   );
 }
 
