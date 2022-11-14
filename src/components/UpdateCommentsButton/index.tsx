@@ -4,7 +4,7 @@ import UpdateIcon from '@mui/icons-material/Update';
 export const UpdateCommentsButton = () => {
     return (
         <IconButton color="primary" aria-label="update comments">
-            <UpdateIcon fontSize='medium' />
+            <UpdateIcon fontSize='large' />
         </IconButton>
     );
 }
