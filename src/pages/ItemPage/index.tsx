@@ -8,7 +8,7 @@ export const ItemPage = () => {
         <Box sx={{ width: '100%', height: '600px', backgroundColor: '#19191b'}}>
             <BackButton />
             <Box sx={{ width: '80%', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                <Item name='Президент Сербии Вучич признал, что ошибся в прогнозах по обороне Херсона Россией' rating={5.5} author='John Lennon' date={'12.11.22'} /> 
+                {/* <Item name='Президент Сербии Вучич признал, что ошибся в прогнозах по обороне Херсона Россией' rating={5.5} author='John Lennon' date={'12.11.22'} />  */}
                 {/* TODO Поменять href на ссылку */}
                 <Link href="#" underline="hover">LINK: {'ТУТ БУДЕТ ССЫЛКА'}</Link> 
                 <Comments /> 
