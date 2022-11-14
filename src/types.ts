@@ -1,6 +1,11 @@
 export type IItem = {
-    name: string,
-    rating: number,
-    author: string,
-    date: string,
+    by : string,
+    descendants : number,
+    id : number,
+    kids : number[],
+    score : number,
+    time : number,
+    title : string,
+    type : string,
+    url : string,
 };
