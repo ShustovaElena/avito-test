@@ -8,21 +8,25 @@ import { IItem } from "../../types";
 import { getRootComments } from "../../utils/api/comments";
 
 export const ItemPage = (props: IItem) => {
+    const { descendants, url } = props;
     const dispatch = useAppDispatch();
     
-    // useEffect(() => {
-    //     if (props.kids.length !== 0) {
-    //         dispatch(getRootComments(props.kids));
-    //     }
-    // });
+    useEffect(() => {
+        console.log(props);
+        if (descendants === 0) {
+            dispatch(getRootComments([]));
+        } else {
+            dispatch(getRootComments(props.kids));
+        }
+    });
 
     return (
         <Box sx={{ width: '100%', height: '600px', backgroundColor: '#19191b'}}>
             <BackButton />
             <Box sx={{ width: '80%', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <Item {...props} /> 
-                <Link href={props.url} underline="hover" target="_blank" rel="noopener">LINK: {props.url}</Link> 
-                <Comments descendants={props.descendants} /> 
+                <Link href={url} underline="hover" target="_blank" rel="noopener">LINK: {props.url}</Link> 
+                <Comments descendants={descendants} /> 
             </Box>
         </Box>
     );

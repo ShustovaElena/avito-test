@@ -7,13 +7,15 @@ import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import CommentIcon from '@mui/icons-material/Comment';
+import { IComment } from '../../types';
 
-export const Comment = (text: string) => {
-  const [open, setOpen] = React.useState(true);
+export const Comment = (props: IComment) => {
+    const { text } = props;
+    const [open, setOpen] = React.useState(true);
 
-  const handleClick = () => {
-    setOpen(!open);
-  };
+    const handleClick = () => {
+        setOpen(!open);
+    };
 
   return (
     <>
