@@ -29,3 +29,10 @@ export type IComments = {
     kids : number[],
     id: number,
 }
+
+export type INestedComment = {
+    text: string;
+    open: boolean;
+    by: string;
+    time: number;
+};

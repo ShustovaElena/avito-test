@@ -5,14 +5,12 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Collapse from '@mui/material/Collapse';
 import CommentIcon from '@mui/icons-material/Comment';
-
-type INestedComment = {
-    text: string;
-    open: boolean;
-};
+import { Container } from '@mui/material';
+import { COMMENT_STYLE } from '../../constants';
+import { INestedComment } from '../../types';
 
 export const NestedComment = (props: INestedComment) => {
-    const { open, text } = props;
+    const { open, text, by, time } = props;
   return (
     <>
       <Collapse in={open} timeout="auto" unmountOnExit>
@@ -21,7 +19,11 @@ export const NestedComment = (props: INestedComment) => {
             <ListItemIcon>
               <CommentIcon />
             </ListItemIcon>
-            <ListItemText primary={text} />
+            <Container sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column'}}>
+                <ListItemText primary={`Author: ${by}`} sx={COMMENT_STYLE} />
+                <ListItemText primary={new Date(time * 1000).toLocaleDateString('en-US')} sx={COMMENT_STYLE} />
+                <ListItemText primary={text} />
+            </Container>
           </ListItemButton>
         </List>
       </Collapse>
