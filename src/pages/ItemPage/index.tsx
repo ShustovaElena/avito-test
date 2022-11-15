@@ -8,7 +8,7 @@ import { IItem } from "../../types";
 import { getRootComments } from "../../utils/api/comments";
 
 export const ItemPage = (props: IItem) => {
-    const { descendants, url } = props;
+    const { descendants, url, kids } = props;
     const dispatch = useAppDispatch();
     
     useEffect(() => {
@@ -25,7 +25,7 @@ export const ItemPage = (props: IItem) => {
             <Box sx={{ width: '80%', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <Item {...props} /> 
                 <Link href={url} underline="hover" target="_blank" rel="noopener">LINK: {props.url}</Link> 
-                <Comments descendants={descendants} /> 
+                <Comments descendants={descendants} kids={kids} /> 
             </Box>
         </Box>
     );

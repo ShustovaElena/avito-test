@@ -5,11 +5,11 @@ import { UpdateCommentsButton } from '../UpdateCommentsButton';
 import { Box } from '@mui/material';
 import { Comment } from '../Comment';
 import { CommentsCount } from '../CommentsCount';
-import { IComment, ICommentsCount } from '../../types';
+import { IComment, IComments } from '../../types';
 import { useAppSelector } from '../../store/hooks';
 
-export const Comments = (props: ICommentsCount) => {
-    const { descendants } = props;
+export const Comments = (props: IComments) => {
+    const { descendants, kids } = props;
     const comments = useAppSelector((state) => state.items.rootComments);
 
     return (
@@ -23,7 +23,7 @@ export const Comments = (props: ICommentsCount) => {
                 Comments
                 </ListSubheader>
                 <CommentsCount descendants={descendants} />
-                <UpdateCommentsButton />
+                <UpdateCommentsButton descendants={descendants} kids={kids} />
             </Box>
         }
         >

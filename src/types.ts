@@ -23,3 +23,8 @@ export type IComment = {
 export type ICommentsCount = {
     descendants: number;
 }
+
+export type IComments = {
+    descendants: number;
+    kids : number[],
+}
