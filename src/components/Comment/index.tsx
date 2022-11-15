@@ -7,21 +7,27 @@ import CommentIcon from '@mui/icons-material/Comment';
 import { IComment } from '../../types';
 import { getNestedComments } from '../../utils/api/comments';
 import { NestedComment } from '../NestedComment';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const Comment = (props: IComment) => {
     const { text, kids } = props;
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const [nestedComments, setNestedComments] = useState<IComment[]>([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            if (kids) {
+                const data = await getNestedComments(kids);
+                if (data) {
+                    setNestedComments(data);
+                }
+            }
+        }
+        fetchData();
+    }, [open]);
 
     const handleClick = async () => {
         setOpen(!open);
-        if (kids) {
-            const data = await getNestedComments(kids);
-            if (data) {
-                setNestedComments(data);
-            }
-        }
     };
 
   return (
