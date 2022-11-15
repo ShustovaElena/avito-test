@@ -4,10 +4,20 @@ import Typography from '@mui/material/Typography';
 import CardActionArea from "@mui/material/CardActionArea";
 import { Box } from "@mui/material";
 import { Link } from 'react-router-dom';
+import { setItem } from "../../slices/itemsSlice";
+import { useAppDispatch } from "../../store/hooks";
 
-export const Item = ({ title, score, by, time }: IItem) => {
+export const Item = (props: IItem) => {
+    const { title, score, by, time } = props;
+
+    const dispatch = useAppDispatch();
+    
+    const onClick = () => {
+        dispatch(setItem(props));
+    };
+
     return(
-        <Card sx={{ maxWidth: '100%', borderRadius: '15px', padding: '10px' }}>
+        <Card sx={{ maxWidth: '100%', borderRadius: '15px', padding: '10px' }} onClick={onClick} >
             <CardActionArea >
                 <Typography variant="h6" sx={{ padding: '5px', textTransform: 'uppercase', color: '#1faee9',  fontWeight: 'bold' }} component={Link} to="/news-page">
                     {title}

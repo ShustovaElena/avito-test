@@ -13,14 +13,14 @@ export const ItemsGroup = () => {
         dispatch(getItems());
     }, [dispatch]);
 
-    (function() {
-        const intervalCall = setInterval(() => {
-            dispatch(getItems());
-        }, 60000);
-        return () => {
-            clearInterval(intervalCall);
-        };
-    }());
+    // (function() {
+    //     const intervalCall = setInterval(() => {
+    //         dispatch(getItems());
+    //     }, 60000);
+    //     return () => {
+    //         clearInterval(intervalCall);
+    //     };
+    // }());
 
     return (
         <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', gap: '15px', width: '80%', margin: '0 auto' }}>

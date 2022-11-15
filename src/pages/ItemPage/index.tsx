@@ -1,17 +1,31 @@
 import { Box, Link } from "@mui/material";
+import { useEffect } from "react";
 import { BackButton } from "../../components/BackButton";
-import Comments from "../../components/Comments";
+import { Comments } from "../../components/Comments";
 import { Item } from "../../components/Item";
+import { useAppDispatch } from "../../store/hooks";
+import { IItem } from "../../types";
+import { getRootComments } from "../../utils/api/comments";
 
-export const ItemPage = () => {
+export const ItemPage = (props: IItem) => {
+    const { descendants, url, kids } = props;
+    const dispatch = useAppDispatch();
+    
+    useEffect(() => {
+        if (descendants === 0) {
+            dispatch(getRootComments([]));
+        } else {
+            dispatch(getRootComments(props.kids));
+        }
+    });
+
     return (
-        <Box sx={{ width: '100%', height: '600px', backgroundColor: '#19191b'}}>
+        <Box sx={{ width: '100%', minHeight: '600px', backgroundColor: '#19191b', paddingBottom: '50px'}}>
             <BackButton />
             <Box sx={{ width: '80%', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                {/* <Item name='Президент Сербии Вучич признал, что ошибся в прогнозах по обороне Херсона Россией' rating={5.5} author='John Lennon' date={'12.11.22'} />  */}
-                {/* TODO Поменять href на ссылку */}
-                <Link href="#" underline="hover">LINK: {'ТУТ БУДЕТ ССЫЛКА'}</Link> 
-                <Comments /> 
+                <Item {...props} /> 
+                <Link href={url} underline="hover" target="_blank" rel="noopener">LINK: {props.url}</Link> 
+                <Comments descendants={descendants} kids={kids} /> 
             </Box>
         </Box>
     );
