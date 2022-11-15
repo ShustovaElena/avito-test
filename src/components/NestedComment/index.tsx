@@ -16,7 +16,7 @@ export const NestedComment = (props: INestedComment) => {
   return (
     <>
       <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
+        <List component="div" disablePadding sx={{ backgroundColor: 'rgba(16,125,172,0.1)' }}>
           <ListItemButton sx={{ pl: 4 }}>
             <ListItemIcon>
               <CommentIcon />
