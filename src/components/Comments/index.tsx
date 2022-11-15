@@ -9,7 +9,7 @@ import { IComment, IComments } from '../../types';
 import { useAppSelector } from '../../store/hooks';
 
 export const Comments = (props: IComments) => {
-    const { descendants, kids } = props;
+    const { descendants, kids, id } = props;
     const comments = useAppSelector((state) => state.items.rootComments);
 
     return (
@@ -22,8 +22,8 @@ export const Comments = (props: IComments) => {
                 <ListSubheader component="div" id="nested-list-subheader" sx={{fontSize: '1.5rem'}}>
                 Comments
                 </ListSubheader>
-                <CommentsCount descendants={descendants} />
-                <UpdateCommentsButton descendants={descendants} kids={kids} />
+                <CommentsCount />
+                <UpdateCommentsButton descendants={descendants} kids={kids} id={id}/>
             </Box>
         }
         >

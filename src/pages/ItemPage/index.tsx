@@ -9,7 +9,7 @@ import { IItem } from "../../types";
 import { getRootComments } from "../../utils/api/comments";
 
 export const ItemPage = (props: IItem) => {
-    const { descendants, url, kids } = props;
+    const { descendants, url, kids, id } = props;
     const dispatch = useAppDispatch();
     const [isPreloader, setIsPreloader] = useState(true);
     
@@ -29,7 +29,7 @@ export const ItemPage = (props: IItem) => {
                     <Item {...props} /> 
                     <Link href={url} underline="hover" target="_blank" rel="noopener">LINK: {props.url}</Link> 
                     {isPreloader ? (<Preloader />) : (
-                    <Comments descendants={descendants} kids={kids} />)}
+                    <Comments descendants={descendants} kids={kids} id={id} />)}
                 </Box>
             </Box>
         </>

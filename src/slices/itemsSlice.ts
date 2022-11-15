@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { RootState } from '../store/store';
 import { IComment, IItem } from '../types';
 import { getRootComments } from '../utils/api/comments';
-import { getItems } from '../utils/api/items';
+import { getItems, getItemById } from '../utils/api/items';
 
 interface ItemsState {
     items: IItem[],
@@ -40,6 +40,9 @@ export const itemsSlice = createSlice({
     });
     builder.addCase(getRootComments.fulfilled, (state, action) => {
         state.rootComments = action.payload;
+    });
+    builder.addCase(getItemById.fulfilled, (state, action) => {
+        state.item = {...action.payload};
     });
   },
 })
