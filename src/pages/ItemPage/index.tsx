@@ -12,7 +12,6 @@ export const ItemPage = (props: IItem) => {
     const dispatch = useAppDispatch();
     
     useEffect(() => {
-        console.log(props);
         if (descendants === 0) {
             dispatch(getRootComments([]));
         } else {
@@ -21,7 +20,7 @@ export const ItemPage = (props: IItem) => {
     });
 
     return (
-        <Box sx={{ width: '100%', height: '600px', backgroundColor: '#19191b'}}>
+        <Box sx={{ width: '100%', minHeight: '600px', backgroundColor: '#19191b', paddingBottom: '50px'}}>
             <BackButton />
             <Box sx={{ width: '80%', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <Item {...props} /> 
