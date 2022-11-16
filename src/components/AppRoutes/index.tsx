@@ -9,8 +9,8 @@ const AppRoutes = () => {
 
     return (
         <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/news-page" element={<ItemPage {...item} />} />
+            <Route path="/" element={<MainPage />} />
+            <Route path="/news-page" element={<ItemPage {...item} />} />
         </Routes>
     );
 };

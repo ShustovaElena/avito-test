@@ -1,6 +1,5 @@
 import { Badge, Container } from "@mui/material";
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import { ICommentsCount } from "../../types";
 import { useAppSelector } from "../../store/hooks";
 
 export const CommentsCount = () => {

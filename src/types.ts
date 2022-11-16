@@ -18,7 +18,12 @@ export type IComment = {
     text: string,
     time: number,
     type: string,
-  };
+};
+
+export type CommentType = {
+    props: IComment;
+    padding: string;
+}
 
 export type ICommentsCount = {
     descendants: number;
@@ -31,8 +36,6 @@ export type IComments = {
 }
 
 export type INestedComment = {
-    text: string;
     open: boolean;
-    by: string;
-    time: number;
+    commentValue: IComment;
 };
