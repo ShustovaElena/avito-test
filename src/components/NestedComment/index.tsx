@@ -5,26 +5,37 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Collapse from '@mui/material/Collapse';
 import CommentIcon from '@mui/icons-material/Comment';
-
-type INestedComment = {
-    text: string;
-    open: boolean;
-};
+import { Container } from '@mui/material';
+import { COMMENT_STYLE } from '../../constants';
+import { INestedComment } from '../../types';
+import { Comment } from '../Comment';
 
 export const NestedComment = (props: INestedComment) => {
-    const { open, text } = props;
-  return (
-    <>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding sx={{ backgroundColor: 'rgba(16,125,172,0.1)' }}>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <CommentIcon />
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItemButton>
-        </List>
-      </Collapse>
-    </>
-  );
+    const { open, commentValue } = props;
+    const { text, by, time, kids } = commentValue;
+
+    return (
+        <>
+        {kids ? 
+        <Collapse in={open} timeout="auto" unmountOnExit>
+            <Comment props={commentValue} padding={'80px'} />
+        </Collapse>
+        :
+        <Collapse in={open} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding sx={{ paddingLeft: '120px' }}>
+            <ListItemButton sx={{ pl: 4 }}>
+                <ListItemIcon>
+                <CommentIcon />
+                </ListItemIcon>
+                <Container sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column'}}>
+                    <ListItemText primary={`Author: ${by}`} sx={COMMENT_STYLE} />
+                    <ListItemText primary={new Date(time * 1000).toLocaleDateString('en-US')} sx={COMMENT_STYLE} />
+                    <ListItemText primary={text} />
+                </Container>
+            </ListItemButton>
+            </List>
+        </Collapse>
+            }
+        </>
+    );
 }

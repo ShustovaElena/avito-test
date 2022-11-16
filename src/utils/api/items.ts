@@ -22,3 +22,17 @@ export const getItems = createAsyncThunk('root/getItems', async () => {
 
     return data;
 });
+
+export const getItemById = createAsyncThunk('root/getItemById', async (id: number) => {
+    const res = await fetch(`${BASE_URL}/item/${id}.json`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    
+      let data = await res.json();
+
+    return data;
+});
+
