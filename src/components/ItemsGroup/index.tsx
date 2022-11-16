@@ -8,6 +8,7 @@ import { IItem } from "../../types";
 export const ItemsGroup = () => {
     const dispatch = useAppDispatch();
     const items = useAppSelector(state => state.items.items);
+    console.log(items);
 
     useEffect(() => {
         dispatch(getItems());
