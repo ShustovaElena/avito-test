@@ -1,10 +1,8 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import App from '../../App';
 import { BrowserRouter } from 'react-router-dom';
-import userEvent from '@testing-library/user-event';
 import { Provider } from 'react-redux';
 import { store } from '../../store/store';
-import { fakeNews, fakeID } from '../../mocks/fakeNews';
 
 describe('Mock API', () => {
   test('render main page with mock api', async () => {

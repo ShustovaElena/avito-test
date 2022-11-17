@@ -1,5 +1,4 @@
 export const fakeID = [33620875]
-// , 33620858, 33620856, 33620840, 33620839
 
 export const fakeNews = [
     {
